@@ -15,6 +15,7 @@ class MenuController
     puts "4 - Import entries from a CSV"
     puts "5 - View Entry"
     puts "6 - Exit"
+    puts "7 - Detonate"
     print "Enter your selection: "
 
     selection = gets.to_i
@@ -45,6 +46,10 @@ class MenuController
     when 6
       puts "Good-bye!"
       exit(0)
+    when 7
+      system "clear"
+      detonate
+      main_menu
     else
       system "clear"
       puts "Sorry, that is not a valid input"
@@ -178,4 +183,12 @@ class MenuController
       search_submenu(entry)
     end
   end
+
+  def detonate
+    @address_book.entries.each do |entry|
+      @address_book.entries.delete(entry)
+    end
+    puts "Every single entry has been deleted"
+  end
+
 end
